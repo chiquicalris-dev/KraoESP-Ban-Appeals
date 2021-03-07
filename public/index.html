@@ -1,24 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-
-        <title>Ban appeal</title>
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <title>Formulario Apelación</title>
     </head>
-    <body class="h-100 d-flex flex-column justify-content-center align-items-stretch">
-        <div class="jumbotron text-center mb-0">
-            <h1>Apelación de baneo (Chiqui's Place 🌿)</h1>
-        </div>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">KraoESP</a>
+                </div>
+                
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
 
-        <div class="flex-fill text-center d-flex h-100 justify-content-center align-items-center">
-            <a class="btn" id="login" style="font-size: 2rem;" href="/.netlify/functions/oauth">Inicia sesión.</a>
-        </div>
-        <script>
+                <div class="nav__menu" id="nav-menu">
+                    <div class="nav__close" id="nav-close">
+                        <i class='bx bx-x'></i>
+                    </div>
+
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="https://xp.chiquicalris.tk" class="nav__link">Calculator</a></li>
+                        <li class="nav__item"><a href="https://discord.gg/KraoESP" class="nav__link">Discord</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home" id="home">
+                <div class="home__container bd-grid">
+                    <div class="home__data">
+                        <h1 class="home__title">Formulario apelación<br> KraoESP</h1>
+                        <p class="home__description">Formulario de apelación de baneo del servidor de KraoESP.</p>
+                        <a id="login" href="/.netlify/functions/oauth" class="home__button">Solicitar</a>
+                    </div>
+           <script>
+            function generateRandomString() {
+                const rand = Math.floor(Math.random() * 10);
+                let randStr = "";
+
+                for (let i = 0; i < 20 + rand; i++) {
+                    randStr += String.fromCharCode(33 + Math.floor(Math.random() * 94));
+                }
+
+                return randStr;
+            }
+ 
+            const state = generateRandomString();
+            localStorage.setItem("state", state);
+
+            document.getElementById("login").href += `?state=${encodeURIComponent(state)}`;
+        </script>
+                </div>
+            </section>
+        </main>
+
+        <!--===== GSAP =====-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+                <script>
             function generateRandomString() {
                 const rand = Math.floor(Math.random() * 10);
                 let randStr = "";
