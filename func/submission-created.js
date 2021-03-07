@@ -32,19 +32,19 @@ exports.handler = async function (event, context) {
         const userInfo = decodeJwt(payload.token);
         const embedFields = [
             {
-                name: "Submitter",
+                name: "Apelado por:",
                 value: `<@${userInfo.id}> (${userInfo.username}#${userInfo.discriminator})`
             },
             {
-                name: "Why were you banned?",
+                name: "¿Por qué fué baneado?",
                 value: payload.banReason.slice(0, MAX_EMBED_FIELD_CHARS)
             },
             {
-                name: "Why do you feel you should be unbanned?",
+                name: "¿Por qué cree que debe de ser desbaneado?",
                 value: payload.appealText.slice(0, MAX_EMBED_FIELD_CHARS)
             },
             {
-                name: "What will you do to avoid being banned in the future?",
+                name: "¿Qué realizará para no volver a ser baneado?",
                 value: payload.futureActions.slice(0, MAX_EMBED_FIELD_CHARS)
             }
         ];
@@ -56,8 +56,8 @@ exports.handler = async function (event, context) {
             };
 
             embedFields.push({
-                name: "Actions",
-                value: `[Approve appeal and unban user](${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))})`
+                name: "Acciones:",
+                value: `[Aprobar y desbanear.](${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))})`
             });
         }
 
@@ -69,7 +69,7 @@ exports.handler = async function (event, context) {
             },
             body: JSON.stringify({
                 embed: {
-                    title: "New appeal submitted!",
+                    title: "¡Nueva apelación!",
                     timestamp: new Date().toISOString(),
                     fields: embedFields
                 }
@@ -91,7 +91,7 @@ exports.handler = async function (event, context) {
             }
         } else {
             console.log(await result.json());
-            throw new Error("Failed to submit message");
+            throw new Error("ERROR");
         }
     }
 
